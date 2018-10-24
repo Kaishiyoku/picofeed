@@ -1,12 +1,12 @@
 {
-    "name": "infostars/picofeed",
+    "name": "kaishiyoku/picofeed",
     "description": "Modern library to handle RSS/Atom feeds",
-    "homepage": "https://github.com/infostars/picofeed",
+    "homepage": "https://github.com/kaishiyoku/picofeed",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Frédéric Guillot"
+            "name": "Andreas Wiedel"
         }
     ],
     "require": {
