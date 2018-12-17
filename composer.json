@@ -1,35 +1,39 @@
 {
-    "name": "kaishiyoku/picofeed",
-    "description": "Modern library to handle RSS/Atom feeds",
-    "homepage": "https://github.com/kaishiyoku/picofeed",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Andreas Wiedel"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "ext-iconv": "*",
-        "ext-dom": "*",
-        "ext-xml": "*",
-        "ext-libxml": "*",
-        "ext-SimpleXML": "*",
-        "zendframework/zendxml": "^1.0"
-    },
-    "require-dev" : {
-        "phpdocumentor/reflection-docblock": "2.0.4",
-        "symfony/yaml": "2.8.7",
-        "phpunit/phpunit" : "4.8.26"
-    },
-    "suggest": {
-        "ext-curl": "PicoFeed will use cURL if present"
-    },
-    "autoload": {
-        "psr-0": {"PicoFeed": "lib/"}
-    },
-    "bin" : [
-        "picofeed"
-    ]
+  "name": "kaishiyoku/picofeed",
+  "description": "Modern library to handle RSS/Atom feeds",
+  "homepage": "https://github.com/kaishiyoku/picofeed",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andreas Wiedel",
+      "email": "dev@andreas-wiedel.de",
+      "homepage": "https://andreas-wiedel.de"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-iconv": "*",
+    "ext-dom": "*",
+    "ext-xml": "*",
+    "ext-libxml": "*",
+    "ext-SimpleXML": "*",
+    "zendframework/zendxml": "^1.0"
+  },
+  "require-dev": {
+    "phpdocumentor/reflection-docblock": "2.0.4",
+    "symfony/yaml": "2.8.7",
+    "phpunit/phpunit": "4.8.26"
+  },
+  "suggest": {
+    "ext-curl": "PicoFeed will use cURL if present"
+  },
+  "autoload": {
+    "psr-0": {
+      "PicoFeed": "lib/"
+    }
+  },
+  "bin": [
+    "picofeed"
+  ]
 }
