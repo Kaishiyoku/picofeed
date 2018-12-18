@@ -12,18 +12,18 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
+    "php": ">=5.6.0",
     "ext-iconv": "*",
     "ext-dom": "*",
     "ext-xml": "*",
     "ext-libxml": "*",
     "ext-SimpleXML": "*",
-    "zendframework/zendxml": "^1.0"
+    "zendframework/zendxml": "1.1.0"
   },
   "require-dev": {
-    "phpdocumentor/reflection-docblock": "2.0.4",
-    "symfony/yaml": "2.8.7",
-    "phpunit/phpunit": "4.8.26"
+    "phpdocumentor/reflection-docblock": "3.3.2",
+    "symfony/yaml": "3.4.20",
+    "phpunit/phpunit": "5.7.27"
   },
   "suggest": {
     "ext-curl": "PicoFeed will use cURL if present"
