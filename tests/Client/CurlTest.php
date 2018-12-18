@@ -2,9 +2,9 @@
 
 namespace PicoFeed\Client;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class CurlTest extends PHPUnit_Framework_TestCase
+class CurlTest extends TestCase
 {
     /**
      * @group online

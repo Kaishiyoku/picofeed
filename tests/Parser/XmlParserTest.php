@@ -3,9 +3,9 @@
 namespace PicoFeed\Parser;
 
 use DOMDocument;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class XmlParserTest extends PHPUnit_Framework_TestCase
+class XmlParserTest extends TestCase
 {
     public function testEmpty()
     {

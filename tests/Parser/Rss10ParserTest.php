@@ -2,9 +2,9 @@
 
 namespace PicoFeed\Parser;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class Rss10ParserTest extends PHPUnit_Framework_TestCase
+class Rss10ParserTest extends TestCase
 {
     public function testBadInput()
     {
