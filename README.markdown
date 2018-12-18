@@ -24,7 +24,7 @@ Features
 Requirements
 ------------
 
-- PHP >= 5.3
+- PHP >= 7.1.3
 - libxml >= 2.7
 - XML PHP extensions: DOM and SimpleXML
 - cURL or Stream Context (`allow_url_fopen=On`)
