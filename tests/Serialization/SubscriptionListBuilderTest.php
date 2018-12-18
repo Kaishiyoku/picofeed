@@ -33,7 +33,7 @@ class SubscriptionListBuilderTest extends TestCase
 </opml>
 ';
 
-        $this->assertEquals($expected, SubscriptionListBuilder::create($subscriptionList)->build());
+        $this->assertEquals(preg_replace("/\r/", "", $expected), SubscriptionListBuilder::create($subscriptionList)->build());
     }
 
     public function testWithoutCategories()
@@ -69,7 +69,7 @@ class SubscriptionListBuilderTest extends TestCase
 </opml>
 ';
 
-        $this->assertEquals($expected, $opml);
+        $this->assertEquals(preg_replace("/\r/", "", $expected), $opml);
     }
 
     public function testWithCategories()
@@ -119,6 +119,6 @@ class SubscriptionListBuilderTest extends TestCase
 </opml>
 ';
 
-        $this->assertEquals($expected, $opml);
+        $this->assertEquals(preg_replace("/\r/", "", $expected), $opml);
     }
 }

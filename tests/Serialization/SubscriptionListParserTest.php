@@ -8,7 +8,7 @@ class SubscriptionListParserTest extends TestCase
 {
     public function testMalFormedFormat()
     {
-        $this->setExpectedException('PicoFeed\Parser\MalformedXmlException');
+        $this->expectException('PicoFeed\Parser\MalformedXmlException');
         SubscriptionListParser::create('foobar')->parse();
     }
 

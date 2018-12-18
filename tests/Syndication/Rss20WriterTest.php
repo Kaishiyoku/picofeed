@@ -62,6 +62,6 @@ class Rss20WriterTest extends TestCase
 </rss>
 ';
 
-        $this->assertEquals($expected, $xml);
+        $this->assertEquals(preg_replace("/\r/", "", $expected), $xml);
     }
 }

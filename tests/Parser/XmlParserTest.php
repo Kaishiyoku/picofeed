@@ -4,6 +4,7 @@ namespace PicoFeed\Parser;
 
 use DOMDocument;
 use PHPUnit\Framework\TestCase;
+use SimpleXMLElement;
 
 class XmlParserTest extends TestCase
 {
@@ -125,26 +126,28 @@ XML;
 
     public function testScanSimpleXML()
     {
-        return <<<XML
+        $xml = <<<XML
 <?xml version="1.0"?>
 <results>
     <result>test</result>
 </results>
 XML;
         $result = XmlParser::getSimpleXml($xml);
+
         $this->assertTrue($result instanceof SimpleXMLElement);
         $this->assertEquals($result->result, 'test');
     }
 
     public function testScanDomDocument()
     {
-        return <<<XML
+        $xml = <<<XML
 <?xml version="1.0"?>
 <results>
     <result>test</result>
 </results>
 XML;
         $result = XmlParser::getDomDocument($xml);
+
         $this->assertTrue($result instanceof DOMDocument);
         $node = $result->getElementsByTagName('result')->item(0);
         $this->assertEquals($node->nodeValue, 'test');

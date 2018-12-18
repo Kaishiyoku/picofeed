@@ -76,6 +76,6 @@ class AtomWriterTest extends TestCase
 </feed>
 ';
 
-        $this->assertEquals($expected, $xml);
+        $this->assertEquals(preg_replace("/\r/", "", $expected), $xml);
     }
 }

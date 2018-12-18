@@ -8,7 +8,7 @@ class Rss10ParserTest extends TestCase
 {
     public function testBadInput()
     {
-        $this->setExpectedException('PicoFeed\Parser\MalformedXmlException');
+        $this->expectException('PicoFeed\Parser\MalformedXmlException');
 
         $parser = new Rss10('boo');
         $parser->execute();
