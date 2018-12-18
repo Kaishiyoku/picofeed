@@ -12,7 +12,7 @@ class CurlTest extends PHPUnit_Framework_TestCase
     public function testDownload()
     {
         $client = new Curl();
-        $client->setUrl('http://miniflux.net/');
+        $client->setUrl('https://www.andreas-wiedel.de/');
         $result = $client->doRequest();
 
         $this->assertTrue(is_array($result));
@@ -28,11 +28,11 @@ class CurlTest extends PHPUnit_Framework_TestCase
     public function testPassthrough()
     {
         $client = new Curl();
-        $client->setUrl('https://miniflux.net/favicon.ico');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/favicon-96x96.png');
         $client->enablePassthroughMode();
         $client->doRequest();
 
-        $this->expectOutputString(file_get_contents('tests/fixtures/miniflux_favicon.ico'));
+        $this->expectOutputString(file_get_contents('tests/fixtures/favicon-96x96.png'));
     }
 
     /**

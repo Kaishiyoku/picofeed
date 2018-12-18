@@ -29,11 +29,11 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testPassthrough()
     {
         $client = Client::getInstance();
-        $client->setUrl('https://miniflux.net/favicon.ico');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/favicon-96x96.png');
         $client->enablePassthroughMode();
         $client->execute();
 
-        $this->expectOutputString(file_get_contents('tests/fixtures/miniflux_favicon.ico'));
+        $this->expectOutputString(file_get_contents('tests/fixtures/favicon-96x96.png'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testMultipleDownload()
     {
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/');
+        $client->setUrl('https://www.andreas-wiedel.de/');
         $result = $client->doRequest();
 
         $body = $result['body'];
@@ -95,12 +95,12 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testCacheLastModified()
     {
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/robots.txt');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/manifest.json');
         $client->execute();
         $lastmod = $client->getLastModified();
 
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/robots.txt');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/manifest.json');
         $client->setLastModified($lastmod);
         $client->execute();
 
@@ -113,13 +113,13 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testCacheBoth()
     {
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/robots.txt');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/manifest.json');
         $client->execute();
         $lastmod = $client->getLastModified();
         $etag = $client->getEtag();
 
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/robots.txt');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/manifest.json');
         $client->setLastModified($lastmod);
         $client->setEtag($etag);
         $client->execute();
@@ -149,12 +149,12 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testContentType()
     {
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/assets/img/favicon.png');
+        $client->setUrl('https://www.andreas-wiedel.de/img/icons/favicon-96x96.png');
         $client->execute();
         $this->assertEquals('image/png', $client->getContentType());
 
         $client = Client::getInstance();
-        $client->setUrl('http://miniflux.net/');
+        $client->setUrl('https://www.andreas-wiedel.de/');
         $client->execute();
         $this->assertEquals('text/html; charset=utf-8', $client->getContentType());
     }
