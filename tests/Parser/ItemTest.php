@@ -26,11 +26,11 @@ class ItemTest extends TestCase
     {
         $parser = new Rss20(file_get_contents('tests/fixtures/podbean.xml'));
         $feed = $parser->execute();
-        $this->assertEquals(array('http://aroundthebloc.podbean.com/e/s03e11-finding-nemo-rocco/'), $feed->items[0]->getTag('guid'));
-        $this->assertEquals(array('false'),  $feed->items[0]->getTag('guid', 'isPermaLink'));
-        $this->assertEquals(array('http://aroundthebloc.podbean.com/mf/web/28bcnk/ATBLogo-BlackBackground.png'),  $feed->items[0]->getTag('media:content', 'url'));
-        $this->assertEquals(array('http://aroundthebloc.podbean.com/e/s03e11-finding-nemo-rocco/feed/'),  $feed->items[0]->getTag('wfw:commentRss'));
-        $this->assertEquals(array(),  $feed->items[0]->getTag('wfw:notExistent'));
+        $this->assertEquals(['http://aroundthebloc.podbean.com/e/s03e11-finding-nemo-rocco/'], $feed->items[0]->getTag('guid'));
+        $this->assertEquals(['false'],  $feed->items[0]->getTag('guid', 'isPermaLink'));
+        $this->assertEquals(['http://aroundthebloc.podbean.com/mf/web/28bcnk/ATBLogo-BlackBackground.png'],  $feed->items[0]->getTag('media:content', 'url'));
+        $this->assertEquals(['http://aroundthebloc.podbean.com/e/s03e11-finding-nemo-rocco/feed/'],  $feed->items[0]->getTag('wfw:commentRss'));
+        $this->assertEquals([],  $feed->items[0]->getTag('wfw:notExistent'));
         $this->assertCount(7, $feed->items[0]->getTag('itunes:*'));
     }
 }

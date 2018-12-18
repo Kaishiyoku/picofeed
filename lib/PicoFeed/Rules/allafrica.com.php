@@ -1,12 +1,13 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.aljazeera.com/news/2015/09/xi-jinping-seattle-china-150922230118373.html',
-            'body' => array(
+            'body' => [
             '//div[@class="story-body"]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
             '//p[@class="kindofstory"]',
             '//cite[@class="byline"]',
             '//div[@class="useful-top"]',
@@ -14,7 +15,7 @@ return array(
             '//links',
             '//sharebar',
             '//related-topics',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

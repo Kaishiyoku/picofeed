@@ -113,6 +113,7 @@ abstract class ItemBuilder
     public function withId($id)
     {
         $this->itemId = $id;
+
         return $this;
     }
 
@@ -126,6 +127,7 @@ abstract class ItemBuilder
     public function withUrl($url)
     {
         $this->itemUrl = $url;
+
         return $this;
     }
 
@@ -139,6 +141,7 @@ abstract class ItemBuilder
     public function withSummary($summary)
     {
         $this->itemSummary = $summary;
+
         return $this;
     }
 
@@ -152,6 +155,7 @@ abstract class ItemBuilder
     public function withContent($content)
     {
         $this->itemContent = $content;
+
         return $this;
     }
 
@@ -165,6 +169,7 @@ abstract class ItemBuilder
     public function withUpdatedDate(DateTime $date)
     {
         $this->itemUpdatedDate = $date;
+
         return $this;
     }
 
@@ -178,6 +183,7 @@ abstract class ItemBuilder
     public function withPublishedDate(DateTime $date)
     {
         $this->itemPublishedDate = $date;
+
         return $this;
     }
 
@@ -195,6 +201,7 @@ abstract class ItemBuilder
         $this->authorName = $name;
         $this->authorEmail = $email;
         $this->authorUrl = $url;
+
         return $this;
     }
 

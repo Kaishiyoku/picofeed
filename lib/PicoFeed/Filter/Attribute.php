@@ -37,47 +37,47 @@ class Attribute
      *
      * @var array
      */
-    private $attribute_whitelist = array(
-        'audio' => array('controls', 'src'),
-        'video' => array('poster', 'controls', 'height', 'width', 'src'),
-        'source' => array('src', 'type'),
-        'dt' => array(),
-        'dd' => array(),
-        'dl' => array(),
-        'table' => array(),
-        'caption' => array(),
-        'tr' => array(),
-        'th' => array(),
-        'td' => array(),
-        'tbody' => array(),
-        'thead' => array(),
-        'h1' => array(),
-        'h2' => array(),
-        'h3' => array(),
-        'h4' => array(),
-        'h5' => array(),
-        'h6' => array(),
-        'strong' => array(),
-        'em' => array(),
-        'code' => array(),
-        'pre' => array(),
-        'blockquote' => array(),
-        'p' => array(),
-        'ul' => array(),
-        'li' => array(),
-        'ol' => array(),
-        'br' => array(),
-        'del' => array(),
-        'a' => array('href'),
-        'img' => array('src', 'title', 'alt'),
-        'figure' => array(),
-        'figcaption' => array(),
-        'cite' => array(),
-        'time' => array('datetime'),
-        'abbr' => array('title'),
-        'iframe' => array('width', 'height', 'frameborder', 'src', 'allowfullscreen'),
-        'q' => array('cite'),
-    );
+    private $attribute_whitelist = [
+        'audio' => ['controls', 'src'],
+        'video' => ['poster', 'controls', 'height', 'width', 'src'],
+        'source' => ['src', 'type'],
+        'dt' => [],
+        'dd' => [],
+        'dl' => [],
+        'table' => [],
+        'caption' => [],
+        'tr' => [],
+        'th' => [],
+        'td' => [],
+        'tbody' => [],
+        'thead' => [],
+        'h1' => [],
+        'h2' => [],
+        'h3' => [],
+        'h4' => [],
+        'h5' => [],
+        'h6' => [],
+        'strong' => [],
+        'em' => [],
+        'code' => [],
+        'pre' => [],
+        'blockquote' => [],
+        'p' => [],
+        'ul' => [],
+        'li' => [],
+        'ol' => [],
+        'br' => [],
+        'del' => [],
+        'a' => ['href'],
+        'img' => ['src', 'title', 'alt'],
+        'figure' => [],
+        'figcaption' => [],
+        'cite' => [],
+        'time' => ['datetime'],
+        'abbr' => ['title'],
+        'iframe' => ['width', 'height', 'frameborder', 'src', 'allowfullscreen'],
+        'q' => ['cite'],
+    ];
 
     /**
      * Scheme whitelist.
@@ -86,7 +86,7 @@ class Attribute
      *
      * @var array
      */
-    private $scheme_whitelist = array(
+    private $scheme_whitelist = [
         'bitcoin:',
         'callto:',
         'ed2k://',
@@ -116,14 +116,14 @@ class Attribute
         'steam:',
         'svn://',
         'tel:',
-    );
+    ];
 
     /**
      * Iframe source whitelist, everything else is ignored.
      *
      * @var array
      */
-    private $iframe_whitelist = array(
+    private $iframe_whitelist = [
         'http://www.youtube.com',
         'https://www.youtube.com',
         'http://player.vimeo.com',
@@ -132,14 +132,14 @@ class Attribute
         'https://www.dailymotion.com',
         'http://vk.com',
         'https://vk.com',
-    );
+    ];
 
     /**
      * Blacklisted resources.
      *
      * @var array
      */
-    private $media_blacklist = array(
+    private $media_blacklist = [
         'api.flattr.com',
         'feeds.feedburner.com',
         'share.feedsportal.com',
@@ -164,59 +164,59 @@ class Attribute
         'www.gstatic.com/images/icons/gplus-16.png',
         'www.gstatic.com/images/icons/gplus-32.png',
         'www.gstatic.com/images/icons/gplus-64.png',
-    );
+    ];
 
     /**
      * Attributes used for external resources.
      *
      * @var array
      */
-    private $media_attributes = array(
+    private $media_attributes = [
         'src',
         'href',
         'poster',
-    );
+    ];
 
     /**
      * Attributes that must be integer.
      *
      * @var array
      */
-    private $integer_attributes = array(
+    private $integer_attributes = [
         'width',
         'height',
         'frameborder',
-    );
+    ];
 
     /**
      * Mandatory attributes for specified tags.
      *
      * @var array
      */
-    private $required_attributes = array(
-        'a' => array('href'),
-        'img' => array('src'),
-        'iframe' => array('src'),
-        'audio' => array('src'),
-        'source' => array('src'),
-    );
+    private $required_attributes = [
+        'a' => ['href'],
+        'img' => ['src'],
+        'iframe' => ['src'],
+        'audio' => ['src'],
+        'source' => ['src'],
+    ];
 
     /**
      * Add attributes to specified tags.
      *
      * @var array
      */
-    private $add_attributes = array(
-        'a' => array('rel' => 'noreferrer', 'target' => '_blank'),
-        'video' => array('controls' => 'true'),
-    );
+    private $add_attributes = [
+        'a' => ['rel' => 'noreferrer', 'target' => '_blank'],
+        'video' => ['controls' => 'true'],
+    ];
 
     /**
      * List of filters to apply.
      *
      * @var array
      */
-    private $filters = array(
+    private $filters = [
         'filterAllowedAttribute',
         'filterIntegerAttribute',
         'rewriteAbsoluteUrl',
@@ -226,7 +226,7 @@ class Attribute
         'rewriteImageProxyUrl',
         'secureIframeSrc',
         'removeYouTubeAutoplay',
-    );
+    ];
 
     /**
      * Add attributes to specified tags.
@@ -259,6 +259,7 @@ class Attribute
             foreach ($this->filters as $filter) {
                 if (!$this->$filter($tag, $attribute, $value)) {
                     unset($attributes[$attribute]);
+
                     break;
                 }
             }
@@ -533,7 +534,7 @@ class Attribute
      */
     public function toHtml(array $attributes)
     {
-        $html = array();
+        $html = [];
 
         foreach ($attributes as $attribute => $value) {
             $html[] = sprintf('%s="%s"', $attribute, Filter::escape($value));

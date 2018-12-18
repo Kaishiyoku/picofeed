@@ -21,7 +21,7 @@ class ItemPostProcessor extends Base
      * @access private
      * @var array
      */
-    private $processors = array();
+    private $processors = [];
 
     /**
      * Execute all processors
@@ -52,6 +52,7 @@ class ItemPostProcessor extends Base
     public function register(ItemProcessorInterface $processor)
     {
         $this->processors[get_class($processor)] = $processor;
+
         return $this;
     }
 

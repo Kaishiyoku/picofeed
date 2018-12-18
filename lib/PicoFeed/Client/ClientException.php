@@ -11,4 +11,5 @@ use PicoFeed\PicoFeedException;
  */
 abstract class ClientException extends PicoFeedException
 {
+
 }

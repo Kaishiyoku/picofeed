@@ -30,7 +30,7 @@ class Rss10ParserTest extends TestCase
 
         $parser = new Rss10(file_get_contents('tests/fixtures/rss_10_empty_feed.xml'));
         $feed = $parser->execute();
-        $this->assertSame(array(), $feed->items);
+        $this->assertSame([], $feed->items);
 
         $parser = new Rss10(file_get_contents('tests/fixtures/heise.rdf'));
         $feed = $parser->execute();

@@ -1,14 +1,15 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.oneindia.com/india/b-luru-govt-likely-remove-word-eunuch-from-sec-36-a-karnataka-police-act-1981173.html',
-            'body' => array(
+            'body' => [
             '//div[@class="ecom-ad-content"]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
             '//*[@id="view_cmtns"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

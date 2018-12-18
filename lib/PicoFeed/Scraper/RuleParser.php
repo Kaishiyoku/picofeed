@@ -14,7 +14,7 @@ class RuleParser implements ParserInterface
 {
     private $dom;
     private $xpath;
-    private $rules = array();
+    private $rules = [];
 
     /**
      * Constructor.

@@ -18,10 +18,10 @@ class Stream extends Client
      */
     private function prepareHeaders()
     {
-        $headers = array(
+        $headers = [
             'Connection: close',
             'User-Agent: '.$this->user_agent,
-        );
+        ];
 
         // disable compression in passthrough mode. It could result in double
         // compressed content which isn't decodeable by browsers
@@ -74,14 +74,14 @@ class Stream extends Client
      */
     private function prepareContext()
     {
-        $context = array(
-            'http' => array(
+        $context = [
+            'http' => [
                 'method' => 'GET',
                 'protocol_version' => 1.1,
                 'timeout' => $this->timeout,
                 'max_redirects' => $this->max_redirects,
-            ),
-        );
+            ],
+        ];
 
         if ($this->proxy_hostname) {
             Logger::setMessage(get_called_class().' Proxy: '.$this->proxy_hostname.':'.$this->proxy_port);
@@ -118,12 +118,14 @@ class Stream extends Client
 
         // Make HTTP request
         $stream = @fopen($this->url, 'r', false, $context);
+
         if (!is_resource($stream)) {
             throw new InvalidUrlException('Unable to establish a connection');
         }
 
         // Get HTTP headers response
         $metadata = stream_get_meta_data($stream);
+
         list($status, $headers) = HttpHeaders::parse($metadata['wrapper_data']);
 
         if ($this->isPassthroughEnabled()) {
@@ -152,11 +154,11 @@ class Stream extends Client
 
         $this->setEffectiveUrl($metadata['wrapper_data']);
 
-        return array(
+        return [
             'status' => $status,
             'body' => $this->decodeBody($body, $headers),
             'headers' => $headers,
-        );
+        ];
     }
 
     /**
@@ -197,6 +199,7 @@ class Stream extends Client
 
             // Append the chunk to the result
             $result .= substr($str, $pos + 2, $len);
+
             $str = substr($str, $pos + 2 + $len);
         }
 

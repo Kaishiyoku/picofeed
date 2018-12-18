@@ -95,6 +95,7 @@ class Filter
         $value = str_replace("\r", ' ', $value);
         $value = str_replace("\t", ' ', $value);
         $value = str_replace("\n", ' ', $value);
+
         // $value = preg_replace('/\s+/', ' ', $value); <= break utf-8
         return trim($value);
     }
@@ -108,10 +109,10 @@ class Filter
      */
     public static function normalizeData($data)
     {
-        $entities = array(
+        $entities = [
             '/(&#)(\d+);/m', // decimal encoded
             '/(&#x)([a-f0-9]+);/mi', // hex encoded
-        );
+        ];
 
         // strip invalid XML 1.0 characters which are encoded as entities
         $data = preg_replace_callback($entities, function ($matches) {

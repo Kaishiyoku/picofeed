@@ -18,17 +18,17 @@ class Tag extends Base
      *
      * @var array
      */
-    private $tag_blacklist = array(
+    private $tag_blacklist = [
         '//script',
         '//style',
-    );
+    ];
 
     /**
      * Tags whitelist.
      *
      * @var array
      */
-    private $tag_whitelist = array(
+    private $tag_whitelist = [
         'audio',
         'video',
         'source',
@@ -70,7 +70,7 @@ class Tag extends Base
         'q',
         'sup',
         'sub',
-    );
+    ];
 
     /**
      * Check if the tag is allowed and is not a pixel tracker.
@@ -128,7 +128,7 @@ class Tag extends Base
     {
         return in_array($tag, array_merge(
             $this->tag_whitelist,
-            array_keys($this->config->getFilterWhitelistedTags(array()))
+            array_keys($this->config->getFilterWhitelistedTags([]))
         ));
     }
 

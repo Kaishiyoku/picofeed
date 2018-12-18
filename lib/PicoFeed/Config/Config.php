@@ -71,7 +71,7 @@ class Config
      *
      * @var array
      */
-    private $container = array();
+    private $container = [];
 
     /**
      * Magic method to have any kind of setters or getters.

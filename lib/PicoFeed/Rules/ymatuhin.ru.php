@@ -1,12 +1,13 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'https://ymatuhin.ru/tools/git-default-editor/',
-            'body' => array(
+            'body' => [
                 '//section',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
               "//script",
               "//style",
               "//h1",
@@ -14,8 +15,8 @@ return array(
               "//aside",
               "/html/body/section/ul",
               "//amp-iframe",
-              "/html/body/section/h4"          
-            ),
-        )
-    )
-);
+              "/html/body/section/h4"
+            ],
+        ]
+    ]
+];

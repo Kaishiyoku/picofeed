@@ -42,6 +42,7 @@ class YoutubeContentGenerator extends Base implements ContentGeneratorInterface
 
         if (! empty($videoId)) {
             $item->setContent('<iframe width="560" height="315" src="//www.youtube.com/embed/'.$videoId[0].'" frameborder="0"></iframe>');
+
             return true;
         }
 
@@ -59,6 +60,7 @@ class YoutubeContentGenerator extends Base implements ContentGeneratorInterface
     {
         if (preg_match('/youtube\.com\/watch\?v=(.*)/', $item->getUrl(), $matches)) {
             $item->setContent('<iframe width="560" height="315" src="//www.youtube.com/embed/'.$matches[1].'" frameborder="0"></iframe>');
+
             return true;
         }
 

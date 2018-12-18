@@ -164,42 +164,42 @@ class ClientTest extends TestCase
     public function testExpirationWithExpiresHeader()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('Expires' => 'Fri, 30 Dec 2016 22:58:52 GMT'));
+        $headers = new HttpHeaders(['Expires' => 'Fri, 30 Dec 2016 22:58:52 GMT']);
         $this->assertEquals(new DateTime('Fri, 30 Dec 2016 22:58:52 GMT'), $client->parseExpiration($headers));
     }
 
     public function testExpirationWithExpiresHeaderAtZero()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('Expires' => '0'));
+        $headers = new HttpHeaders(['Expires' => '0']);
         $this->assertEquals((new DateTime())->format(self::DATETIME_FORMAT), $client->parseExpiration($headers)->format(self::DATETIME_FORMAT));
     }
 
     public function testExpirationWithCacheControlHeaderAndZeroMaxAge()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('cache-control' => 'private, max-age=0, no-cache'));
+        $headers = new HttpHeaders(['cache-control' => 'private, max-age=0, no-cache']);
         $this->assertEquals((new DateTime())->format(self::DATETIME_FORMAT), $client->parseExpiration($headers)->format(self::DATETIME_FORMAT));
     }
 
     public function testExpirationWithCacheControlHeaderAndNotEmptyMaxAge()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('cache-control' => 'private, max-age=600'));
+        $headers = new HttpHeaders(['cache-control' => 'private, max-age=600']);
         $this->assertEquals((new DateTime('+600 seconds'))->format(self::DATETIME_FORMAT), $client->parseExpiration($headers)->format(self::DATETIME_FORMAT));
     }
 
     public function testExpirationWithCacheControlHeaderAndOnlyMaxAge()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('cache-control' => 'max-age=300'));
+        $headers = new HttpHeaders(['cache-control' => 'max-age=300']);
         $this->assertEquals((new DateTime('+300 seconds'))->format(self::DATETIME_FORMAT), $client->parseExpiration($headers)->format(self::DATETIME_FORMAT));
     }
 
     public function testExpirationWithCacheControlHeaderAndNotEmptySMaxAge()
     {
         $client = Client::getInstance();
-        $headers = new HttpHeaders(array('cache-control' => 'no-transform,public,max-age=300,s-maxage=900'));
+        $headers = new HttpHeaders(['cache-control' => 'no-transform,public,max-age=300,s-maxage=900']);
         $this->assertEquals((new DateTime('+900 seconds'))->format(self::DATETIME_FORMAT), $client->parseExpiration($headers)->format(self::DATETIME_FORMAT));
     }
 }

@@ -7,4 +7,5 @@ namespace PicoFeed\Client;
  */
 class UnauthorizedException extends ClientException
 {
+
 }

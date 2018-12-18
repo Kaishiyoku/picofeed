@@ -9,4 +9,5 @@ namespace PicoFeed\Client;
  */
 class MaxRedirectException extends ClientException
 {
+
 }

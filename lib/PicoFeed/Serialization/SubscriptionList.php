@@ -15,7 +15,7 @@ class SubscriptionList
      *
      * @var Subscription[]
      */
-    public $subscriptions = array();
+    public $subscriptions = [];
 
     /**
      * Title
@@ -46,6 +46,7 @@ class SubscriptionList
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -70,6 +71,7 @@ class SubscriptionList
     public function addSubscription(Subscription $subscription)
     {
         $this->subscriptions[] = $subscription;
+
         return $this;
     }
 }

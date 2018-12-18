@@ -29,6 +29,7 @@ abstract class Base
     public function __construct(Config $config = null)
     {
         $this->config = $config ?: new Config();
+
         Logger::setTimezone($this->config->getTimezone());
     }
 

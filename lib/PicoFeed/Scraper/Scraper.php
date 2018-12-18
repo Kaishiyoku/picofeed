@@ -225,15 +225,18 @@ class Scraper extends Base
                 $maxRecursions = 25;
             }
             $pageContent .= $parser->execute();
+
             // check if there is a link to next page and recursively get content (max 25 pages)
             if((($nextLink = $parser->findNextLink()) !== null) && $recursionDepth < $maxRecursions){
                 $nextLink = Url::resolve($nextLink,$this->url);
+
                 $this->setUrl($nextLink);
                 $this->execute($pageContent,$recursionDepth+1);
             }
             else{
                 $this->content = $pageContent;
             }
+
             Logger::setMessage(get_called_class().': Content length: '.strlen($this->content).' bytes');
         }
     }
@@ -257,6 +260,7 @@ class Scraper extends Base
 
                 if (preg_match($pattern, $sub_url)) {
                     Logger::setMessage(get_called_class().': Matched url '.$sub_url);
+
                     return new RuleParser($this->html, $rule);
                 }
             }

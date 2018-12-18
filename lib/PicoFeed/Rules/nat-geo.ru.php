@@ -1,11 +1,12 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.nat-geo.ru/fact/868093-knidos-antichnyy-naukograd/',
-            'body' => array(
+            'body' => [
                 '//div[@class="article-inner-text"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

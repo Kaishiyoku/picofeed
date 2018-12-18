@@ -8,7 +8,7 @@ class HttpHeadersTest extends TestCase
 {
     public function testHttpHeadersSet()
     {
-        $headers = new HttpHeaders(array('Content-Type' => 'test'));
+        $headers = new HttpHeaders(['Content-Type' => 'test']);
         $this->assertEquals('test', $headers['content-typE']);
         $this->assertTrue(isset($headers['ConTent-Type']));
 
@@ -18,7 +18,7 @@ class HttpHeadersTest extends TestCase
 
     public function testParseWithMultipleOccurrenceOfHTTP()
     {
-        $lines = array(
+        $lines = [
             "HTTP/1.1 200 OK\r\n",
             "Server: cloudflare-nginx\r\n",
             "Date: Sun, 18 Oct 2015 20:48:32 GMT\r\n",
@@ -35,7 +35,7 @@ class HttpHeadersTest extends TestCase
             "HTTPS: on\r\n",
             "CF-RAY: 23771ac66c382210-EWR\r\n",
             "\r\n",
-        );
+        ];
 
         list($status, $headers) = HttpHeaders::parse($lines);
         $this->assertEquals(200, $status);
@@ -46,7 +46,7 @@ class HttpHeadersTest extends TestCase
 
     public function testParseWithMultipleRedirections()
     {
-        $headers = array(
+        $headers = [
             "HTTP/1.1 301 OK\r\n",
             "Content-Length: 0\r\n",
             "Date: Sun, 18 Oct 2015 21:18:32 GMT\r\n",
@@ -74,7 +74,7 @@ class HttpHeadersTest extends TestCase
             "Vary: Accept-Encoding\r\n",
             "Date: Sun, 18 Oct 2015 21:18:33 GMT\r\n",
             "Content-Encoding: gzip\r\n",
-        );
+        ];
 
         list($status) = HttpHeaders::parse($headers);
         $this->assertEquals(200, $status);
@@ -82,10 +82,10 @@ class HttpHeadersTest extends TestCase
 
     public function testParseWithEmptyHeaderValue()
     {
-        $headers = array(
+        $headers = [
             "HTTP/1.1 301 OK\r\n",
             "Pragma:",
-        );
+        ];
 
         list($status) = HttpHeaders::parse($headers);
         $this->assertEquals(301, $status);

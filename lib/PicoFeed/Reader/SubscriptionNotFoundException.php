@@ -9,4 +9,5 @@ namespace PicoFeed\Reader;
  */
 class SubscriptionNotFoundException extends ReaderException
 {
+
 }

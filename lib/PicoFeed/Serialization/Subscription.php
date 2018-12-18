@@ -39,6 +39,7 @@ class Subscription
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -63,6 +64,7 @@ class Subscription
     public function setFeedUrl($feedUrl)
     {
         $this->feedUrl = $feedUrl;
+
         return $this;
     }
 
@@ -87,6 +89,7 @@ class Subscription
     public function setSiteUrl($siteUrl)
     {
         $this->siteUrl = $siteUrl;
+
         return $this;
     }
 
@@ -111,6 +114,7 @@ class Subscription
     public function setCategory($category)
     {
         $this->category = $category;
+
         return $this;
     }
 
@@ -135,6 +139,7 @@ class Subscription
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -159,6 +164,7 @@ class Subscription
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 

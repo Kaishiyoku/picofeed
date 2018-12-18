@@ -23,7 +23,7 @@ class Rss20ParserTest extends TestCase
 
         $parser = new Rss20(file_get_contents('tests/fixtures/rss_20_empty_feed.xml'));
         $feed = $parser->execute();
-        $this->assertEquals(array(), $feed->items);
+        $this->assertEquals([], $feed->items);
     }
 
     public function testFindFeedTitle()

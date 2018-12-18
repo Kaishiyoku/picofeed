@@ -17,9 +17,9 @@ class Atom extends Parser
     /**
      * Supported namespaces.
      */
-    protected $namespaces = array(
+    protected $namespaces = [
         'atom' => 'http://www.w3.org/2005/Atom',
-    );
+    ];
 
     /**
      * Get the path to the items XML tree.
@@ -318,6 +318,7 @@ class Atom extends Parser
 
         if ($fallback) {
             $link = $this->findLink($xml, '');
+
             return $link ? (string) $link['href'] : '';
         }
 

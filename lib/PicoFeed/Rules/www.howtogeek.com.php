@@ -1,14 +1,15 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.howtogeek.com/235283/what-is-a-wireless-hard-drive-and-should-i-get-one/',
-            'body' => array(
+            'body' => [
             '//div[@class="thecontent"]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
             '//*[@class="relatedside"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

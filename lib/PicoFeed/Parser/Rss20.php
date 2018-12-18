@@ -17,12 +17,12 @@ class Rss20 extends Parser
     /**
      * Supported namespaces.
      */
-    protected $namespaces = array(
+    protected $namespaces = [
         'dc' => 'http://purl.org/dc/elements/1.1/',
         'content' => 'http://purl.org/rss/1.0/modules/content/',
         'feedburner' => 'http://rssnamespace.org/feedburner/ext/1.0',
         'atom' => 'http://www.w3.org/2005/Atom',
-    );
+    ];
 
     /**
      * Get the path to the items XML tree.
@@ -177,6 +177,7 @@ class Rss20 extends Parser
         if ($item->publishedDate === null) {
             $this->findItemPublishedDate($entry, $item, $feed);
         }
+
         $item->setUpdatedDate($item->getPublishedDate()); // No updated date in RSS 2.0 specifications
     }
 

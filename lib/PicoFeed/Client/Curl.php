@@ -32,7 +32,7 @@ class Curl extends Client
      *
      * @var array
      */
-    private $response_headers = array();
+    private $response_headers = [];
 
     /**
      * Counter on the number of header received.
@@ -130,9 +130,9 @@ class Curl extends Client
      */
     private function prepareHeaders()
     {
-        $headers = array(
+        $headers = [
             'Connection: close',
-        );
+        ];
 
         if ($this->etag) {
             $headers[] = 'If-None-Match: '.$this->etag;
@@ -166,6 +166,7 @@ class Curl extends Client
 
             if ($this->proxy_username) {
                 Logger::setMessage(get_called_class().' Proxy credentials: Yes');
+
                 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->proxy_username.':'.$this->proxy_password);
             } else {
                 Logger::setMessage(get_called_class().' Proxy credentials: No');
@@ -201,7 +202,7 @@ class Curl extends Client
     private function prepareDownloadMode($ch)
     {
         $this->body = '';
-        $this->response_headers = array();
+        $this->response_headers = [];
         $this->response_headers_count = 0;
         $write_function = 'readBody';
         $header_function = 'readHeaders';
@@ -210,8 +211,8 @@ class Curl extends Client
             $write_function = 'passthroughBody';
         }
 
-        curl_setopt($ch, CURLOPT_WRITEFUNCTION, array($this, $write_function));
-        curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this, $header_function));
+        curl_setopt($ch, CURLOPT_WRITEFUNCTION, [$this, $write_function]);
+        curl_setopt($ch, CURLOPT_HEADERFUNCTION, [$this, $header_function]);
 
         return $ch;
     }
@@ -256,6 +257,7 @@ class Curl extends Client
         // which enforce TLS 1.1+.
         // Starting with curl 7.39.0 SSLv3 is disabled by default.
         $version = curl_version();
+
         if ($version['version_number'] >= 467456 && $version['version_number'] < 468736) {
             curl_setopt($ch, CURLOPT_SSLVERSION, 1);
         }
@@ -273,7 +275,8 @@ class Curl extends Client
      */
     private function executeContext()
     {
-        $ch = $this->prepareContext();
+        $ch = $this->prepareContext()
+        ;
         curl_exec($ch);
 
         Logger::setMessage(get_called_class().' cURL total time: '.curl_getinfo($ch, CURLINFO_TOTAL_TIME));
@@ -316,11 +319,11 @@ class Curl extends Client
             }
         }
 
-        return array(
+        return [
             'status' => $status,
             'body' => $this->body,
             'headers' => $headers,
-        );
+        ];
     }
 
     /**
@@ -332,11 +335,11 @@ class Curl extends Client
      */
     private function handleRedirection($location)
     {
-        $result = array();
+        $result = [];
         $this->url = Url::resolve($location, $this->url);
         $this->body = '';
         $this->body_length = 0;
-        $this->response_headers = array();
+        $this->response_headers = [];
         $this->response_headers_count = 0;
 
         while (true) {
@@ -352,7 +355,7 @@ class Curl extends Client
                 $this->url = Url::resolve($result['headers']['Location'], $this->url);
                 $this->body = '';
                 $this->body_length = 0;
-                $this->response_headers = array();
+                $this->response_headers = [];
                 $this->response_headers_count = 0;
             } else {
                 break;

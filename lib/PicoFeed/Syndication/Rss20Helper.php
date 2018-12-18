@@ -42,7 +42,9 @@ class Rss20Helper
     {
         $node = $this->document->createElement($tag);
         $node->appendChild($this->document->createTextNode($value));
+
         $element->appendChild($node);
+
         return $this;
     }
 

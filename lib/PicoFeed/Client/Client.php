@@ -41,7 +41,7 @@ abstract class Client
      *
      * @var array
      */
-    protected $request_headers = array();
+    protected $request_headers = [];
 
     /**
      * HTTP Etag header.
@@ -111,7 +111,7 @@ abstract class Client
      *
      * @var array
      */
-    protected $additional_curl_options = array();
+    protected $additional_curl_options = [];
 
     /**
      * Client connection timeout.
@@ -231,6 +231,7 @@ abstract class Client
         $this->handleNormalResponse($response);
 
         $this->expiration = $this->parseExpiration($response['headers']);
+
         Logger::setMessage(get_called_class().' Expiration: '.$this->expiration->format(DATE_ISO8601));
 
         return $this;
@@ -301,10 +302,10 @@ abstract class Client
      */
     private function hasBeenModified($response, $etag, $lastModified)
     {
-        $headers = array(
+        $headers = [
             'Etag' => $etag,
             'Last-Modified' => $lastModified,
-        );
+        ];
 
         // Compare the values for each header that is present
         $presentCacheHeaderCount = 0;
@@ -313,6 +314,7 @@ abstract class Client
                 if ($response['headers'][$key] !== $value) {
                     return true;
                 }
+
                 ++$presentCacheHeaderCount;
             }
         }
@@ -369,6 +371,7 @@ abstract class Client
     public function setLastModified($last_modified)
     {
         $this->last_modified = $last_modified;
+
         return $this;
     }
 
@@ -391,6 +394,7 @@ abstract class Client
     public function setEtag($etag)
     {
         $this->etag = $etag;
+
         return $this;
     }
 
@@ -423,6 +427,7 @@ abstract class Client
     public function setUrl($url)
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -495,6 +500,7 @@ abstract class Client
     public function setTimeout($timeout)
     {
         $this->timeout = $timeout ?: $this->timeout;
+
         return $this;
     }
 
@@ -507,6 +513,7 @@ abstract class Client
     public function setUserAgent($user_agent)
     {
         $this->user_agent = $user_agent ?: $this->user_agent;
+
         return $this;
     }
 
@@ -519,6 +526,7 @@ abstract class Client
     public function setMaxRedirections($max)
     {
         $this->max_redirects = $max ?: $this->max_redirects;
+
         return $this;
     }
 
@@ -531,6 +539,7 @@ abstract class Client
     public function setMaxBodySize($max)
     {
         $this->max_body_size = $max ?: $this->max_body_size;
+
         return $this;
     }
 
@@ -543,6 +552,7 @@ abstract class Client
     public function setProxyHostname($hostname)
     {
         $this->proxy_hostname = $hostname ?: $this->proxy_hostname;
+
         return $this;
     }
 
@@ -555,6 +565,7 @@ abstract class Client
     public function setProxyPort($port)
     {
         $this->proxy_port = $port ?: $this->proxy_port;
+
         return $this;
     }
 
@@ -567,6 +578,7 @@ abstract class Client
     public function setProxyUsername($username)
     {
         $this->proxy_username = $username ?: $this->proxy_username;
+
         return $this;
     }
 
@@ -579,6 +591,7 @@ abstract class Client
     public function setProxyPassword($password)
     {
         $this->proxy_password = $password ?: $this->proxy_password;
+
         return $this;
     }
 
@@ -592,6 +605,7 @@ abstract class Client
     public function setUsername($username)
     {
         $this->username = $username ?: $this->username;
+
         return $this;
     }
 
@@ -605,6 +619,7 @@ abstract class Client
     public function setPassword($password)
     {
         $this->password = $password ?: $this->password;
+
         return $this;
     }
 
@@ -617,6 +632,7 @@ abstract class Client
     public function setAdditionalCurlOptions(array $options)
     {
         $this->additional_curl_options = $options ?: $this->additional_curl_options;
+
         return $this;
     }
 
@@ -629,6 +645,7 @@ abstract class Client
     public function enablePassthroughMode()
     {
         $this->passthrough = true;
+
         return $this;
     }
 
@@ -640,6 +657,7 @@ abstract class Client
     public function disablePassthroughMode()
     {
         $this->passthrough = false;
+
         return $this;
     }
 
@@ -660,7 +678,7 @@ abstract class Client
             $this->setProxyPort($config->getProxyPort());
             $this->setProxyUsername($config->getProxyUsername());
             $this->setProxyPassword($config->getProxyPassword());
-            $this->setAdditionalCurlOptions($config->getAdditionalCurlOptions() ?: array());
+            $this->setAdditionalCurlOptions($config->getAdditionalCurlOptions() ?: []);
         }
 
         return $this;

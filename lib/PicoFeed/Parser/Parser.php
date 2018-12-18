@@ -60,14 +60,14 @@ abstract class Parser implements ParserInterface
      *
      * @var array
      */
-    protected $namespaces = array();
+    protected $namespaces = [];
 
     /**
      * XML namespaces used in document.
      *
      * @var array
      */
-    protected $used_namespaces = array();
+    protected $used_namespaces = [];
 
     /**
      * Item Post Processor instance
@@ -94,6 +94,7 @@ abstract class Parser implements ParserInterface
 
         // Encode everything in UTF-8
         Logger::setMessage(get_called_class().': HTTP Encoding "'.$http_encoding.'" ; XML Encoding "'.$xml_encoding.'"');
+
         $this->content = Encoding::convert($this->content, $xml_encoding ?: $http_encoding);
 
         $this->itemPostProcessor = new ItemPostProcessor($this->config);
@@ -114,12 +115,14 @@ abstract class Parser implements ParserInterface
 
         if ($xml === false) {
             Logger::setMessage(get_called_class().': Applying XML workarounds');
+
             $this->content = Filter::normalizeData($this->content);
             $xml = XmlParser::getSimpleXml($this->content);
 
             if ($xml === false) {
                 Logger::setMessage(get_called_class().': XML parsing error');
                 Logger::setMessage(XmlParser::getErrors());
+
                 throw new MalformedXmlException('XML parsing error');
             }
         }
@@ -286,7 +289,7 @@ abstract class Parser implements ParserInterface
     {
         $language = strtolower($language);
 
-        $rtl_languages = array(
+        $rtl_languages = [
             'ar', // Arabic (ar-**)
             'fa', // Farsi (fa-**)
             'ur', // Urdu (ur-**)
@@ -295,7 +298,7 @@ abstract class Parser implements ParserInterface
             'dv', // Divehi (dv-**)
             'he', // Hebrew (he-**)
             'yi', // Yiddish (yi-**)
-        );
+        ];
 
         foreach ($rtl_languages as $prefix) {
             if (strpos($language, $prefix) === 0) {
@@ -315,6 +318,7 @@ abstract class Parser implements ParserInterface
     public function setHashAlgo($algo)
     {
         $this->hash_algo = $algo ?: $this->hash_algo;
+
         return $this;
     }
 
@@ -328,6 +332,7 @@ abstract class Parser implements ParserInterface
     {
         $this->config = $config;
         $this->itemPostProcessor->setConfig($config);
+
         return $this;
     }
 
@@ -364,6 +369,7 @@ abstract class Parser implements ParserInterface
         }
 
         $this->itemPostProcessor->register($processor);
+
         return $this;
     }
 
@@ -376,6 +382,7 @@ abstract class Parser implements ParserInterface
     public function setGrabberIgnoreUrls(array $urls)
     {
         $this->itemPostProcessor->getProcessor('PicoFeed\Processor\ScraperProcessor')->ignoreUrls($urls);
+
         return $this;
     }
 

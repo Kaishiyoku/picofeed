@@ -10,4 +10,5 @@ namespace PicoFeed\Parser;
  */
 class XmlEntityException extends MalformedXmlException
 {
+
 }

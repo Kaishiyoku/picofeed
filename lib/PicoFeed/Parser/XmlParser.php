@@ -109,6 +109,7 @@ class XmlParser
     public static function htmlToXml($html)
     {
         $dom = self::getHtmlDocument('<?xml version="1.0" encoding="UTF-8">'.$html);
+
         return $dom->saveXML($dom->getElementsByTagName('body')->item(0));
     }
 
@@ -121,7 +122,7 @@ class XmlParser
      */
     public static function getErrors()
     {
-        $errors = array();
+        $errors = [];
 
         foreach (libxml_get_errors() as $error) {
             $errors[] = sprintf('XML error: %s (Line: %d - Column: %d - Code: %d)',
@@ -214,7 +215,7 @@ class XmlParser
      * @param  array             $ns    Prefix to namespace URI mapping
      * @return SimpleXMLElement[]
      */
-    public static function getXPathResult(SimpleXMLElement $xml, $query, array $ns = array())
+    public static function getXPathResult(SimpleXMLElement $xml, $query, array $ns = [])
     {
         if (!empty($ns)) {
             $query = static::replaceXPathPrefixWithNamespaceURI($query, $ns);

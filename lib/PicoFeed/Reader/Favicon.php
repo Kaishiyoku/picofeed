@@ -24,14 +24,14 @@ class Favicon extends Base
      *
      * @var array
      */
-    private $types = array(
+    private $types = [
         'image/png',
         'image/gif',
         'image/x-icon',
         'image/jpeg',
         'image/jpg',
         'image/svg+xml',
-    );
+    ];
 
     /**
      * Icon binary content.
@@ -84,10 +84,7 @@ class Favicon extends Base
             return '';
         }
 
-        return sprintf(
-            'data:%s;base64,%s',
-            $this->getType(),
-            base64_encode($this->content)
+        return sprintf('data:%s;base64,%s', $this->getType(), base64_encode($this->content)
         );
     }
 
@@ -136,15 +133,17 @@ class Favicon extends Base
         $website = new Url($website_link);
 
         if ($favicon_link !== '') {
-            $icons = array($favicon_link);
+            $icons = [$favicon_link];
         } else {
             $icons = $this->extract($this->download($website->getBaseUrl('/'))->getContent());
+
             $icons[] = $website->getBaseUrl('/favicon.ico');
         }
 
         foreach ($icons as $icon_link) {
             $icon_link = Url::resolve($icon_link, $website);
             $resource = $this->download($icon_link);
+
             $this->content = $resource->getContent();
             $this->content_type = $resource->getContentType();
 
@@ -166,7 +165,7 @@ class Favicon extends Base
      */
     public function extract($html)
     {
-        $icons = array();
+        $icons = [];
 
         if (empty($html)) {
             return $icons;

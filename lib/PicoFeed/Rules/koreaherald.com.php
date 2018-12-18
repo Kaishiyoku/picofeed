@@ -1,11 +1,12 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.koreaherald.com/view.php?ud=20150926000018',
-            'body' => array(
+            'body' => [
             '//div[@id="articleText"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

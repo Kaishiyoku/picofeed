@@ -19,7 +19,7 @@ class Logger
      *
      * @var array
      */
-    private static $messages = array();
+    private static $messages = [];
 
     /**
      * Default timezone.
@@ -83,7 +83,7 @@ class Logger
      */
     public static function deleteMessages()
     {
-        self::$messages = array();
+        self::$messages = [];
     }
 
     /**

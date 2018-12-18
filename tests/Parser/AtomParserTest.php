@@ -31,7 +31,7 @@ class AtomParserTest extends TestCase
 
         $parser = new Atom(file_get_contents('tests/fixtures/atom_empty_feed.xml'));
         $feed = $parser->execute();
-        $this->assertEquals(array(), $feed->items);
+        $this->assertEquals([], $feed->items);
     }
 
     public function testFindFeedTitle()

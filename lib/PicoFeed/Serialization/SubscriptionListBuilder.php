@@ -67,15 +67,18 @@ class SubscriptionListBuilder
         if ($this->subscriptionList->getTitle() !== '') {
             $titleElement = $this->document->createElement('title');
             $titleElement->appendChild($this->document->createTextNode($this->subscriptionList->getTitle()));
+
             $headElement->appendChild($titleElement);
         }
 
         $opmlElement->appendChild($headElement);
         $opmlElement->appendChild($this->buildBody());
+
         $this->document->appendChild($opmlElement);
 
         if ($filename !== '') {
             $this->document->save($filename);
+
             return '';
         }
 
@@ -111,6 +114,7 @@ class SubscriptionListBuilder
 
         if ($this->hasCategories()) {
             $this->buildCategories($bodyElement);
+
             return $bodyElement;
         }
 
@@ -193,7 +197,7 @@ class SubscriptionListBuilder
      */
     private function groupByCategories()
     {
-        $categories = array();
+        $categories = [];
 
         foreach ($this->subscriptionList->subscriptions as $subscription) {
             $categories[$subscription->getCategory()][] = $subscription;

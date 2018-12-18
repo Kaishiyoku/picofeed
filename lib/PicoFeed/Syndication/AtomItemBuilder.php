@@ -55,6 +55,7 @@ class AtomItemBuilder extends ItemBuilder
             $node = $this->feedBuilder->getDocument()->createElement('content');
             $node->setAttribute('type', 'html');
             $node->appendChild($this->feedBuilder->getDocument()->createCDATASection($this->itemContent));
+
             $this->itemElement->appendChild($node);
         }
 

@@ -14,21 +14,21 @@ class FaviconTest extends TestCase
                 <link rel="icon" href="http://example.com/myicon.ico" />
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array('http://example.com/myicon.ico'), $favicon->extract($html));
+        $this->assertEquals(['http://example.com/myicon.ico'], $favicon->extract($html));
 
         // multiple values in rel attribute
         $html = '<!DOCTYPE html><html><head>
                 <link rel="shortcut icon" href="http://example.com/myicon.ico" />
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array('http://example.com/myicon.ico'), $favicon->extract($html));
+        $this->assertEquals(['http://example.com/myicon.ico'], $favicon->extract($html));
 
         // with other attributes present
         $html = '<!DOCTYPE html><html><head>
                 <link rel="icon" type="image/vnd.microsoft.icon" href="http://example.com/image.ico" />
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array('http://example.com/image.ico'), $favicon->extract($html));
+        $this->assertEquals(['http://example.com/image.ico'], $favicon->extract($html));
 
         // ignore icon in other attribute
         $html = '<!DOCTYPE html><html><head>
@@ -41,7 +41,7 @@ class FaviconTest extends TestCase
                 <link rel="icon" type="image/png" href="http://example.com/image.png" />
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array('http://example.com/image.png'), $favicon->extract($html));
+        $this->assertEquals(['http://example.com/image.png'], $favicon->extract($html));
 
         // allows multiple icons
         $html = '<!DOCTYPE html><html><head>
@@ -49,7 +49,7 @@ class FaviconTest extends TestCase
                 <link rel="icon" type="image/x-icon" href="http://example.com/image.ico"/>
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array('http://example.com/image.png', 'http://example.com/image.ico'), $favicon->extract($html));
+        $this->assertEquals(['http://example.com/image.png', 'http://example.com/image.ico'], $favicon->extract($html));
 
         // empty array with broken html
         $html = '!DOCTYPE html html head
@@ -57,16 +57,16 @@ class FaviconTest extends TestCase
                 link rel="icon" type="image/x-icon" href="http://example.com/image.ico"/
                 /head body /p boo /p body /html';
 
-        $this->assertEquals(array(), $favicon->extract($html));
+        $this->assertEquals([], $favicon->extract($html));
 
         // empty array on no input
-        $this->assertEquals(array(), $favicon->extract(''));
+        $this->assertEquals([], $favicon->extract(''));
 
         // empty array on no icon found
         $html = '<!DOCTYPE html><html><head>
                 </head><body><p>boo</p></body></html>';
 
-        $this->assertEquals(array(), $favicon->extract($html));
+        $this->assertEquals([], $favicon->extract($html));
     }
 
     /**

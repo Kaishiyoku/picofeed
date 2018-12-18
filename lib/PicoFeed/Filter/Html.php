@@ -40,7 +40,7 @@ class Html
      *
      * @var array
      */
-    private $empty_tags = array();
+    private $empty_tags = [];
 
     /**
      * Empty flag.
@@ -100,15 +100,15 @@ class Html
             $this->attribute->setImageProxyCallback($this->config->getFilterImageProxyCallback());
             $this->attribute->setImageProxyUrl($this->config->getFilterImageProxyUrl());
             $this->attribute->setImageProxyProtocol($this->config->getFilterImageProxyProtocol());
-            $this->attribute->setIframeWhitelist($this->config->getFilterIframeWhitelist(array()));
-            $this->attribute->setIntegerAttributes($this->config->getFilterIntegerAttributes(array()));
-            $this->attribute->setAttributeOverrides($this->config->getFilterAttributeOverrides(array()));
-            $this->attribute->setRequiredAttributes($this->config->getFilterRequiredAttributes(array()));
-            $this->attribute->setMediaBlacklist($this->config->getFilterMediaBlacklist(array()));
-            $this->attribute->setMediaAttributes($this->config->getFilterMediaAttributes(array()));
-            $this->attribute->setSchemeWhitelist($this->config->getFilterSchemeWhitelist(array()));
-            $this->attribute->setWhitelistedAttributes($this->config->getFilterWhitelistedTags(array()));
-            $this->tag->setWhitelistedTags(array_keys($this->config->getFilterWhitelistedTags(array())));
+            $this->attribute->setIframeWhitelist($this->config->getFilterIframeWhitelist([]));
+            $this->attribute->setIntegerAttributes($this->config->getFilterIntegerAttributes([]));
+            $this->attribute->setAttributeOverrides($this->config->getFilterAttributeOverrides([]));
+            $this->attribute->setRequiredAttributes($this->config->getFilterRequiredAttributes([]));
+            $this->attribute->setMediaBlacklist($this->config->getFilterMediaBlacklist([]));
+            $this->attribute->setMediaAttributes($this->config->getFilterMediaAttributes([]));
+            $this->attribute->setSchemeWhitelist($this->config->getFilterSchemeWhitelist([]));
+            $this->attribute->setWhitelistedAttributes($this->config->getFilterWhitelistedTags([]));
+            $this->tag->setWhitelistedTags(array_keys($this->config->getFilterWhitelistedTags([])));
         }
 
         return $this;
@@ -238,6 +238,7 @@ class Html
     {
         // Replace &nbsp; with normal space
         $content = str_replace("\xc2\xa0", ' ', $content);
+
         $this->output .= Filter::escape($content);
     }
 }

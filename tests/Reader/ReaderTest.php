@@ -100,7 +100,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array('http://miniflux.net/feed'), $feeds);
+        $this->assertEquals(['http://miniflux.net/feed'], $feeds);
     }
 
     public function testFindAtomFeed()
@@ -112,7 +112,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array('http://miniflux.net/feed'), $feeds);
+        $this->assertEquals(['http://miniflux.net/feed'], $feeds);
     }
 
     public function testFindFeedNotInHead()
@@ -125,7 +125,7 @@ class ReaderTest extends TestCase
                 <p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array('http://miniflux.net/feed'), $feeds);
+        $this->assertEquals(['http://miniflux.net/feed'], $feeds);
     }
 
     public function testFindNoFeedPresent()
@@ -136,7 +136,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array(), $feeds);
+        $this->assertEquals([], $feeds);
     }
 
     public function testFindIgnoreUnknownType()
@@ -148,7 +148,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array(), $feeds);
+        $this->assertEquals([], $feeds);
     }
 
     public function testFindIgnoreTypeInOtherAttribute()
@@ -160,7 +160,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array(), $feeds);
+        $this->assertEquals([], $feeds);
     }
 
     public function testFindWithOtherAttributesPresent()
@@ -172,7 +172,7 @@ class ReaderTest extends TestCase
                 </head><body><p>boo</p></body></html>';
 
         $feeds = $reader->find('http://miniflux.net/', $html);
-        $this->assertEquals(array('http://miniflux.net/feed'), $feeds);
+        $this->assertEquals(['http://miniflux.net/feed'], $feeds);
     }
 
     public function testFindMultipleFeeds()
@@ -187,11 +187,11 @@ class ReaderTest extends TestCase
 
         $feeds = $reader->find('http://www.cnn.com/services/rss/', $html);
         $this->assertEquals(
-                array(
+                [
                     'http://rss.cnn.com/rss/edition.rss',
                     'http://rss.cnn.com/rss/edition_connecttheworld.rss',
                     'http://rss.cnn.com/rss/edition_worldsportblog.rss',
-                ),
+                ],
                 $feeds
         );
     }
@@ -205,7 +205,7 @@ class ReaderTest extends TestCase
                 /head body /p boo /p body /html';
 
         $feeds = $reader->find('http://miniflux.net/', '');
-        $this->assertEquals(array(), $feeds);
+        $this->assertEquals([], $feeds);
     }
 
     public function testFindWithHtmlParamEmptyString()
@@ -213,7 +213,7 @@ class ReaderTest extends TestCase
         $reader = new Reader();
 
         $feeds = $reader->find('http://miniflux.net/', '');
-        $this->assertEquals(array(), $feeds);
+        $this->assertEquals([], $feeds);
     }
 
     /**

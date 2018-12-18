@@ -12,7 +12,7 @@ class YoutubeContentGeneratorTest extends TestCase
         $xml = simplexml_load_string('<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015"><entry><id>test123</id><yt:videoId>test123</yt:videoId></entry></feed>');
 
         $item = new Item();
-        $item->namespaces = array('yt' => 'http://www.youtube.com/xml/schemas/2015');
+        $item->namespaces = ['yt' => 'http://www.youtube.com/xml/schemas/2015'];
         $item->xml = $xml;
 
         $generator = new YoutubeContentGenerator();

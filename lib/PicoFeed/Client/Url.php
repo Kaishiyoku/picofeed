@@ -21,7 +21,7 @@ class Url
      *
      * @var array
      */
-    private $components = array();
+    private $components = [];
 
     /**
      * Constructor.
@@ -31,7 +31,7 @@ class Url
     public function __construct($url)
     {
         $this->url = $url;
-        $this->components = parse_url($url) ?: array();
+        $this->components = parse_url($url) ?: [];
 
         // Issue with PHP < 5.4.7 and protocol relative url
         if (version_compare(PHP_VERSION, '5.4.7', '<') && $this->isProtocolRelative()) {
@@ -134,8 +134,7 @@ class Url
     {
         $path = $this->getPath();
 
-        return empty($path) || $path{0}
-        !== '/';
+        return empty($path) || $path{0} !== '/';
     }
 
     /**
@@ -237,6 +236,7 @@ class Url
     public function setScheme($scheme)
     {
         $this->components['scheme'] = $scheme;
+
         return $this;
     }
 

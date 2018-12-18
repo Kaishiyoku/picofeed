@@ -56,7 +56,7 @@ abstract class FeedBuilder
     /**
      * @var ItemBuilder[]
      */
-    protected $items = array();
+    protected $items = [];
 
     /**
      * Constructor
@@ -90,6 +90,7 @@ abstract class FeedBuilder
     public function withTitle($title)
     {
         $this->feedTitle = $title;
+
         return $this;
     }
 
@@ -103,6 +104,7 @@ abstract class FeedBuilder
     public function withFeedUrl($url)
     {
         $this->feedUrl = $url;
+
         return $this;
     }
 
@@ -116,6 +118,7 @@ abstract class FeedBuilder
     public function withSiteUrl($url)
     {
         $this->siteUrl = $url;
+
         return $this;
     }
 
@@ -129,6 +132,7 @@ abstract class FeedBuilder
     public function withDate(DateTime $date)
     {
         $this->feedDate = $date;
+
         return $this;
     }
 
@@ -146,6 +150,7 @@ abstract class FeedBuilder
         $this->authorName = $name;
         $this->authorEmail = $email;
         $this->authorUrl = $url;
+
         return $this;
     }
 
@@ -159,6 +164,7 @@ abstract class FeedBuilder
     public function withItem(ItemBuilder $item)
     {
         $this->items[] = $item;
+
         return $this;
     }
 

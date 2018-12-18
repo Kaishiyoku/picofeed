@@ -9,4 +9,5 @@ namespace PicoFeed\Client;
  */
 class TimeoutException extends ClientException
 {
+
 }

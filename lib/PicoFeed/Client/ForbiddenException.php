@@ -7,4 +7,5 @@ namespace PicoFeed\Client;
  */
 class ForbiddenException extends ClientException
 {
+
 }

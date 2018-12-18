@@ -70,17 +70,17 @@ class FilterTest extends TestCase
         $expected = '<iframe src="https://www.kickstarter.com/projects/lefnire/habitrpg-mobile/widget/video.html" height="480" width="640" frameborder="0"></iframe>';
 
         $f = Filter::html($data, 'http://blabla');
-        $f->attribute->setIframeWhitelist(array('http://www.kickstarter.com'));
+        $f->attribute->setIframeWhitelist(['http://www.kickstarter.com']);
         $this->assertEquals($expected, $f->execute());
 
         $data = '<iframe src="http://www.youtube.com/bla" height="480" width="640" frameborder="0"></iframe>';
 
         $f = Filter::html($data, 'http://blabla');
-        $f->attribute->setIframeWhitelist(array('http://www.kickstarter.com'));
+        $f->attribute->setIframeWhitelist(['http://www.kickstarter.com']);
         $this->assertEmpty($f->execute());
 
         $config = new Config();
-        $config->setFilterWhitelistedTags(array('p' => array('title')));
+        $config->setFilterWhitelistedTags(['p' => ['title']]);
 
         $f = Filter::html('<p>Test<strong>boo</strong></p>', 'http://blabla');
         $f->setConfig($config);

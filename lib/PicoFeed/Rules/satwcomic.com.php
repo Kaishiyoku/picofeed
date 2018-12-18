@@ -1,13 +1,14 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://satwcomic.com/day-at-the-beach',
-            'body' => array(
+            'body' => [
                 '//div[@class="container"]/center/a/img',
                 '//span[@itemprop="articleBody"]',
-            ),
-            'strip' => array(),
-        ),
-    ),
-);
+            ],
+            'strip' => [],
+        ],
+    ],
+];

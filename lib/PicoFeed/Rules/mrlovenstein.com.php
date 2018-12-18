@@ -1,9 +1,10 @@
 <?php
-return array(
-    'filter' => array(
-        '%.*%' => array(
+
+return [
+    'filter' => [
+        '%.*%' => [
             '%alt="(.+)" */>%' => '/><br/>$1',
             '%\.png%' => '_rollover.png',
-        ),
-    ),
-);
+        ],
+    ],
+];

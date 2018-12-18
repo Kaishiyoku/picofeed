@@ -27,7 +27,7 @@ class DateParser extends Base
      *
      * @var array
      */
-    public $formats = array(
+    public $formats = [
         DATE_ATOM => null,
         DATE_RSS => null,
         DATE_COOKIE => null,
@@ -54,7 +54,7 @@ class DateParser extends Base
         'm.d.Y' => 10,
         'd/m/Y' => 10,
         'm/d/Y' => 10,
-    );
+    ];
 
     /**
      * Try to parse all date format for broken feeds.
@@ -69,11 +69,13 @@ class DateParser extends Base
 
         foreach ($this->formats as $format => $length) {
             $truncated_value = $value;
+
             if ($length !== null) {
                 $truncated_value = substr($truncated_value, 0, $length);
             }
 
             $date = $this->getValidDate($format, $truncated_value);
+
             if ($date !== false) {
                 return $date;
             }

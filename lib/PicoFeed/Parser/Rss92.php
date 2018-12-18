@@ -10,4 +10,5 @@ namespace PicoFeed\Parser;
  */
 class Rss92 extends Rss20
 {
+
 }

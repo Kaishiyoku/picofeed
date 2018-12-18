@@ -15,7 +15,7 @@ class Feed
      *
      * @var Item[]
      */
-    public $items = array();
+    public $items = [];
 
     /**
      * Feed id.
@@ -87,7 +87,7 @@ class Feed
     {
         $output = '';
 
-        foreach (array('id', 'title', 'feedUrl', 'siteUrl', 'language', 'description', 'logo') as $property) {
+        foreach (['id', 'title', 'feedUrl', 'siteUrl', 'language', 'description', 'logo'] as $property) {
             $output .= 'Feed::'.$property.' = '.$this->$property.PHP_EOL;
         }
 
@@ -202,6 +202,7 @@ class Feed
     public function setItems(array $items)
     {
         $this->items = $items;
+
         return $this;
     }
 
@@ -214,6 +215,7 @@ class Feed
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -226,6 +228,7 @@ class Feed
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -238,6 +241,7 @@ class Feed
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -250,6 +254,7 @@ class Feed
     public function setFeedUrl($feedUrl)
     {
         $this->feedUrl = $feedUrl;
+
         return $this;
     }
 
@@ -262,6 +267,7 @@ class Feed
     public function setSiteUrl($siteUrl)
     {
         $this->siteUrl = $siteUrl;
+
         return $this;
     }
 
@@ -274,6 +280,7 @@ class Feed
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -286,6 +293,7 @@ class Feed
     public function setLanguage($language)
     {
         $this->language = $language;
+
         return $this;
     }
 
@@ -298,6 +306,7 @@ class Feed
     public function setLogo($logo)
     {
         $this->logo = $logo;
+
         return $this;
     }
 
@@ -310,6 +319,7 @@ class Feed
     public function setIcon($icon)
     {
         $this->icon = $icon;
+
         return $this;
     }
 }

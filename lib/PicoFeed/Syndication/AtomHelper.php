@@ -42,7 +42,9 @@ class AtomHelper
     {
         $node = $this->document->createElement($tag);
         $node->appendChild($this->document->createTextNode($value));
+
         $element->appendChild($node);
+
         return $this;
     }
 
@@ -102,6 +104,7 @@ class AtomHelper
         $node->setAttribute('rel', $rel);
         $node->setAttribute('type', $type);
         $node->setAttribute('href', $url);
+
         $element->appendChild($node);
 
         return $this;

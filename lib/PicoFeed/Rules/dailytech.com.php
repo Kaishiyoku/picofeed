@@ -1,13 +1,14 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.dailytech.com/Apples+First+Fixes+to+iOS+9+Land+w+iOS++901+Release/article37495.htm',
-            'body' => array(
+            'body' => [
             '//div[@class="NewsBodyImage"]',
             '//span[@id="lblSummary"]',
             '//span[@id="lblBody"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

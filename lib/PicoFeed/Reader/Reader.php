@@ -21,13 +21,13 @@ class Reader extends Base
      *
      * @var array
      */
-    private $formats = array(
+    private $formats = [
         'Atom' => '//feed',
         'Rss20' => '//rss[@version="2.0"]',
         'Rss92' => '//rss[@version="0.92"]',
         'Rss91' => '//rss[@version="0.91"]',
         'Rss10' => '//rdf',
-    );
+    ];
 
     /**
      * Download a feed (no discovery).
@@ -45,12 +45,12 @@ class Reader extends Base
         $url = $this->prependScheme($url);
 
         return Client::getInstance()
-                        ->setConfig($this->config)
-                        ->setLastModified($last_modified)
-                        ->setEtag($etag)
-                        ->setUsername($username)
-                        ->setPassword($password)
-                        ->execute($url);
+            ->setConfig($this->config)
+            ->setLastModified($last_modified)
+            ->setEtag($etag)
+            ->setUsername($username)
+            ->setPassword($password)
+            ->execute($url);
     }
 
     /**
@@ -97,12 +97,12 @@ class Reader extends Base
 
         $dom = XmlParser::getHtmlDocument($html);
         $xpath = new DOMXPath($dom);
-        $links = array();
+        $links = [];
 
-        $queries = array(
+        $queries = [
             '//link[@type="application/rss+xml"]',
             '//link[@type="application/atom+xml"]',
-        );
+        ];
 
         foreach ($queries as $query) {
             $nodes = $xpath->query($query);

@@ -16,7 +16,8 @@ use PicoFeed\Scraper\Scraper;
  */
 class ScraperProcessor extends Base implements ItemProcessorInterface
 {
-    private $ignoredUrls = array();
+    private $ignoredUrls = [];
+
     private $scraper;
 
     /**
@@ -36,6 +37,7 @@ class ScraperProcessor extends Base implements ItemProcessorInterface
     public function setExecutionCallback(Closure $executionCallback)
     {
         $this->executionCallback = $executionCallback;
+
         return $this;
     }
 
@@ -76,6 +78,7 @@ class ScraperProcessor extends Base implements ItemProcessorInterface
     public function ignoreUrls(array $urls)
     {
         $this->ignoredUrls = $urls;
+
         return $this;
     }
 

@@ -1,20 +1,21 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.golem.de/news/breko-telekom-verzoegert-gezielt-den-vectoring-ausbau-1311-102974.html',
-            'body' => array(
+            'body' => [
                 '//header[@class="cluster-header"]',
                 '//header[@class="paged-cluster-header"]',
                 '//div[@class="formatted"]',
-                ),
-            'next_page' => array(
+            ],
+            'next_page' => [
                 '//a[@id="atoc_next"]'
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
                 '//header[@class="cluster-header"]/a',
                 '//div[@id="iqadtile4"]',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

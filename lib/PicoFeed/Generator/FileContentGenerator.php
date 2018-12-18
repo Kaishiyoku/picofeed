@@ -13,7 +13,7 @@ use PicoFeed\Parser\Item;
  */
 class FileContentGenerator extends Base implements ContentGeneratorInterface
 {
-    private $extensions = array('pdf');
+    private $extensions = ['pdf'];
 
     /**
      * Execute Content Generator
@@ -27,6 +27,7 @@ class FileContentGenerator extends Base implements ContentGeneratorInterface
         foreach ($this->extensions as $extension) {
             if (substr($item->getUrl(), - strlen($extension)) === $extension) {
                 $item->setContent('<a href="'.$item->getUrl().'" target="_blank">'.$item->getUrl().'</a>');
+
                 return true;
             }
         }

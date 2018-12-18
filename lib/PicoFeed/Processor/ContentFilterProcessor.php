@@ -29,6 +29,7 @@ class ContentFilterProcessor extends Base implements ItemProcessorInterface
         if ($this->config->getContentFiltering(true)) {
             $filter = Filter::html($item->getContent(), $feed->getSiteUrl());
             $filter->setConfig($this->config);
+
             $item->setContent($filter->execute());
         } else {
             Logger::setMessage(get_called_class().': Content filtering disabled');

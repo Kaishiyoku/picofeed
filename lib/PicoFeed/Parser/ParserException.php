@@ -12,4 +12,5 @@ use PicoFeed\PicoFeedException;
  */
 abstract class ParserException extends PicoFeedException
 {
+
 }

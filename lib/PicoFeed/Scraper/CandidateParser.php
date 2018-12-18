@@ -22,7 +22,7 @@ class CandidateParser implements ParserInterface
      *
      * @var array
      */
-    private $candidatesAttributes = array(
+    private $candidatesAttributes = [
         'articleBody',
         'articlebody',
         'article-body',
@@ -44,14 +44,14 @@ class CandidateParser implements ParserInterface
         'article',
         'content',
         'main',
-    );
+    ];
 
     /**
      * List of attributes to strip.
      *
      * @var array
      */
-    private $stripAttributes = array(
+    private $stripAttributes = [
         'comment',
         'share',
         'links',
@@ -73,20 +73,20 @@ class CandidateParser implements ParserInterface
         'by_line',
         'byline',
         'sponsors',
-    );
+    ];
 
     /**
      * Tags to remove.
      *
      * @var array
      */
-    private $stripTags = array(
+    private $stripTags = [
         'nav',
         'header',
         'footer',
         'aside',
         'form',
-    );
+    ];
 
     /**
      * Constructor.

@@ -37,11 +37,13 @@ class Rss20ItemBuilder extends ItemBuilder
             $guid = $this->feedBuilder->getDocument()->createElement('guid');
             $guid->setAttribute('isPermaLink', 'false');
             $guid->appendChild($this->feedBuilder->getDocument()->createTextNode($this->itemId));
+
             $this->itemElement->appendChild($guid);
         } else {
             $guid = $this->feedBuilder->getDocument()->createElement('guid');
             $guid->setAttribute('isPermaLink', 'true');
             $guid->appendChild($this->feedBuilder->getDocument()->createTextNode($this->itemUrl));
+
             $this->itemElement->appendChild($guid);
         }
 
@@ -59,6 +61,7 @@ class Rss20ItemBuilder extends ItemBuilder
         if (!empty($this->itemContent)) {
             $node = $this->feedBuilder->getDocument()->createElement('content:encoded');
             $node->appendChild($this->feedBuilder->getDocument()->createCDATASection($this->itemContent));
+
             $this->itemElement->appendChild($node);
         }
 

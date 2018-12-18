@@ -9,4 +9,5 @@ namespace PicoFeed\Client;
  */
 class InvalidUrlException extends ClientException
 {
+
 }

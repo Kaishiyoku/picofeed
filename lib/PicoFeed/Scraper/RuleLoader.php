@@ -35,7 +35,7 @@ class RuleLoader extends Base
             }
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -46,12 +46,13 @@ class RuleLoader extends Base
      */
     public function getRulesFileList($hostname)
     {
-        $files = array($hostname);                 // subdomain.domain.tld
+        $files = [$hostname];                 // subdomain.domain.tld
         $parts = explode('.', $hostname);
         $len = count($parts);
 
         if ($len > 2) {
             $subdomain = array_shift($parts);
+
             $files[] = implode('.', $parts);       // domain.tld
             $files[] = '.'.implode('.', $parts);   // .domain.tld
             $files[] = $subdomain;                 // subdomain
@@ -74,6 +75,7 @@ class RuleLoader extends Base
     {
         foreach ($files as $file) {
             $filename = $folder.'/'.$file.'.php';
+
             if (file_exists($filename)) {
                 Logger::setMessage(get_called_class().' Load rule: '.$file);
 
@@ -81,7 +83,7 @@ class RuleLoader extends Base
             }
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -91,7 +93,7 @@ class RuleLoader extends Base
      */
     public function getRulesFolders()
     {
-        $folders = array();
+        $folders = [];
 
         if ($this->config !== null && $this->config->getGrabberRulesFolder() !== null) {
             $folders[] = $this->config->getGrabberRulesFolder();

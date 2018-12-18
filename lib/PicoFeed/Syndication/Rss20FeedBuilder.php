@@ -58,6 +58,7 @@ class Rss20FeedBuilder extends FeedBuilder
         $link->setAttribute('href', $this->feedUrl);
         $link->setAttribute('rel', 'self');
         $link->setAttribute('type', 'application/rss+xml');
+
         $this->channelElement->appendChild($link);
 
         foreach ($this->items as $item) {

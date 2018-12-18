@@ -15,7 +15,7 @@ class Item
      *
      * @var string[]
      */
-    public $rtl = array(
+    public $rtl = [
         'ar',  // Arabic (ar-**)
         'fa',  // Farsi (fa-**)
         'ur',  // Urdu (ur-**)
@@ -24,7 +24,7 @@ class Item
         'dv',  // Divehi (dv-**)
         'he',  // Hebrew (he-**)
         'yi',  // Yiddish (yi-**)
-    );
+    ];
 
     /**
      * Item id.
@@ -108,7 +108,7 @@ class Item
      *
      * @var array
      */
-    public $categories = array();
+    public $categories = [];
 
     /**
      * Raw XML.
@@ -122,7 +122,7 @@ class Item
      *
      * @var array
      */
-    public $namespaces = array();
+    public $namespaces = [];
 
     /**
      * Check if a XML namespace exists
@@ -169,7 +169,7 @@ class Item
     {
         $output = '';
 
-        foreach (array('id', 'title', 'url', 'language', 'author', 'enclosureUrl', 'enclosureType') as $property) {
+        foreach (['id', 'title', 'url', 'language', 'author', 'enclosureUrl', 'enclosureType'] as $property) {
             $output .= 'Item::'.$property.' = '.$this->$property.PHP_EOL;
         }
 
@@ -219,6 +219,7 @@ class Item
     public function setUrl($url)
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -282,6 +283,7 @@ class Item
     public function setContent($value)
     {
         $this->content = $value;
+
         return $this;
     }
 
@@ -354,6 +356,7 @@ class Item
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -366,6 +369,7 @@ class Item
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -378,6 +382,7 @@ class Item
     public function setAuthor($author)
     {
         $this->author = $author;
+
         return $this;
     }
 
@@ -390,6 +395,7 @@ class Item
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -402,6 +408,7 @@ class Item
     public function setPublishedDate($publishedDate)
     {
         $this->publishedDate = $publishedDate;
+
         return $this;
     }
 
@@ -414,6 +421,7 @@ class Item
     public function setUpdatedDate($updatedDate)
     {
         $this->updatedDate = $updatedDate;
+
         return $this;
     }
 
@@ -426,6 +434,7 @@ class Item
     public function setEnclosureUrl($enclosureUrl)
     {
         $this->enclosureUrl = $enclosureUrl;
+
         return $this;
     }
 
@@ -438,6 +447,7 @@ class Item
     public function setEnclosureType($enclosureType)
     {
         $this->enclosureType = $enclosureType;
+
         return $this;
     }
 
@@ -450,6 +460,7 @@ class Item
     public function setLanguage($language)
     {
         $this->language = $language;
+
         return $this;
     }
 
@@ -462,6 +473,7 @@ class Item
     public function setCategories($categories)
     {
         $this->categories = $categories;
+
         return $this;
     }
 
@@ -496,6 +508,7 @@ class Item
     public function setXml($xml)
     {
         $this->xml = $xml;
+
         return $this;
     }
 
@@ -518,6 +531,7 @@ class Item
     public function setNamespaces($namespaces)
     {
         $this->namespaces = $namespaces;
+
         return $this;
     }
 

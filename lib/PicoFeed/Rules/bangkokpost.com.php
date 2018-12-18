@@ -1,19 +1,20 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.bangkokpost.com/news/politics/704204/new-us-ambassador-arrives-in-bangkok',
-            'body' => array(
+            'body' => [
             '//article/div[@class="articleContents"]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
             '//h2',
             '//h4',
             '//div[@class="text-size"]',
             '//div[@class="relate-story"]',
             '//div[@class="text-ads"]',
             '//ul',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

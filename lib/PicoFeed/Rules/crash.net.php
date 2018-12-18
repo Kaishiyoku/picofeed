@@ -1,12 +1,13 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.crash.net/motogp/interview/247550/1/exclusive-andrea-dovizioso-interview.html',
-            'body' => array(
+            'body' => [
                 '//div[@id="content"]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
                 '//script',
                 '//style',
                 '//*[@title="Social Networking"]',
@@ -21,8 +22,8 @@ return array(
                 '//*[contains(@class, "btn")]',
                 '//*[@class="content"]',
                 '//h3',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];
 

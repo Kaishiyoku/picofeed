@@ -1,13 +1,14 @@
 <?php
-return array(
-    'grabber' => array(
-        '%.*%' => array(
+
+return [
+    'grabber' => [
+        '%.*%' => [
             'test_url' => 'http://www.wired.com/gamelife/2013/09/ouya-free-the-games/',
-            'body' => array(
+            'body' => [
                 '//div[@data-js="gallerySlides"]',
                  '//div[starts-with(@class,"post")]',
-            ),
-            'strip' => array(
+            ],
+            'strip' => [
                 '//h1',
                 '//nav',
                 '//button',
@@ -38,7 +39,7 @@ return array(
                 '//ul[@id="article-tags"]',
                 '//style',
                 '//section[contains(@class,"footer")]'
-            ),
-        )
-    )
-);
+            ],
+        ]
+    ]
+];
