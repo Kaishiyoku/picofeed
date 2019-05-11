@@ -45,7 +45,7 @@ class ScraperTest extends TestCase
 			<div class="wpa wpmrec">
 				<span class="wpa-about">Advertisements</span>
 				<div class="u">		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-right:5px;margin-top:0px">
-		</div>		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-top:0px">
+			
 		</div></div>
 				
 			</div>

@@ -33,4 +33,12 @@ class ItemTest extends TestCase
         $this->assertEquals([],  $feed->items[0]->getTag('wfw:notExistent'));
         $this->assertCount(7, $feed->items[0]->getTag('itunes:*'));
     }
+
+    public function testGetPubDate()
+    {
+        $parser = new Rss20(file_get_contents('tests/fixtures/rss_20_mal.xml'));
+        $feed = $parser->execute();
+
+        $this->assertEquals(new \DateTime('2019-05-10T13:42:08.000000+0200'), $feed->items[0]->getDate());
+    }
 }
