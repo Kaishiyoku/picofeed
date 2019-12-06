@@ -223,7 +223,7 @@ class ReaderTest extends TestCase
     {
         $reader = new Reader();
         $client = $reader->discover('https://www.universfreebox.com/');
-        $this->assertEquals('https://www.universfreebox.com/backend.php', $client->getUrl());
+        $this->assertEquals('https://www.universfreebox.com/feed', $client->getUrl());
         $this->assertInstanceOf('PicoFeed\Parser\Rss20', $reader->getParser($client->getUrl(), $client->getContent(), $client->getEncoding()));
 
         $reader = new Reader();

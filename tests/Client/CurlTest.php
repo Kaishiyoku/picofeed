@@ -17,7 +17,7 @@ class CurlTest extends TestCase
 
         $this->assertTrue(is_array($result));
         $this->assertEquals(200, $result['status']);
-        $this->assertEquals('<!DOC', substr($result['body'], 0, 5));
+        $this->assertEquals('<!doc', substr($result['body'], 0, 5));
         $this->assertEquals('text/html; charset=UTF-8', $result['headers']['Content-Type']);
     }
 
@@ -42,7 +42,7 @@ class CurlTest extends TestCase
     public function testSSL()
     {
         $client = new Curl();
-        $client->setUrl('https://www.mjvmobile.com.br');
+        $client->setUrl('https://expired.badssl.com/');
         $client->doRequest();
     }
 

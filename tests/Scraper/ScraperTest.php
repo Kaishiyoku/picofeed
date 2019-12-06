@@ -5,9 +5,12 @@ namespace PicoFeed\Scraper;
 use PHPUnit\Framework\TestCase;
 use PicoFeed\Reader\Reader;
 use PicoFeed\Config\Config;
+use Spatie\Snapshots\MatchesSnapshots;
 
 class ScraperTest extends TestCase
 {
+    use MatchesSnapshots;
+
     /**
      * @group online
      */
@@ -35,23 +38,11 @@ class ScraperTest extends TestCase
     public function testRuleParser()
     {
         $grabber = new Scraper(new Config());
-        $grabber->setUrl('https://byorgey.wordpress.com/about/');
+        $grabber->setUrl('https://www.andreas-wiedel.de/');
         $grabber->execute();
         $this->assertTrue($grabber->hasRelevantContent());
 
-        $expected = '<div class="entry-content">
-						<p>I’m Brent Yorgey. I am an assistant professor in the <a href="http://ozark.hendrix.edu">department of mathematics and computer science</a> at <a href="http://www.hendrix.edu">Hendrix College</a> in Conway, Arkansas, USA. My academic/professional interests include functional programming languages (especially <a title="haskell.org" href="http://haskell.org" target="_blank">Haskell</a>), type systems, category theory, combinatorics, discrete mathematics in general, and computer science and <a href="http://www.mathlesstraveled.com">mathematics education</a>. Other interests include music (I am a classical and jazz pianist), Go, bridge, and classical Greek and Hebrew.</p>
-		<div class="wpcnt">
-			<div class="wpa wpmrec">
-				<span class="wpa-about">Advertisements</span>
-				<div class="u">		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-right:5px;margin-top:0px">
-			
-		</div></div>
-				
-			</div>
-		</div>																	</div>';
-
-        $this->assertEquals(preg_replace("/\r/", "", $expected), $grabber->getRelevantContent());
+        $this->assertMatchesSnapshot($grabber->getRelevantContent());
     }
 
     /**
